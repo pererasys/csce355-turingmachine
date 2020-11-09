@@ -12,18 +12,15 @@ from turingmachine import TuringMachine
 parser = argparse.ArgumentParser()
 
 
-def main(which, topology, tape):
-    tm = TuringMachine(which, function=topology)
-    tm.execute(tape)
-
-
 if __name__ == "__main__":
-    parser.add_argument('-w', '--which', dest='which',
-                        help='Prefix for all states.', required=True)
-    parser.add_argument('-i', '--input', dest='input',
+    parser.add_argument('-n', '--name', dest='name',
+                        help='The name of the function, also defines the prefix for all states.', required=True)
+    parser.add_argument('-f', '--function', dest='function',
                         help='File name of the input file.', required=True)
     parser.add_argument('-t', '--tape', dest='tape',
                         help='File name of the tape.', required=True)
     options = parser.parse_args()
 
-    main(which=options.which, topology=options.input, tape=options.tape)
+    tm = TuringMachine(options.which, function=options.function)
+
+    tm.execute(options.tape)

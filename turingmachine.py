@@ -22,17 +22,17 @@ class TuringMachine(object):
     def _is_final(self, state):
         '''
         Returns whether or not the tape is in a final state.
-
         @param state - str
         '''
+
         return state.split(self._prefix)[1] == "FINAL"
 
     def _build_description(self, vals):
         '''
         Builds a description for the given condition values.
-
         @param vals - list(str)
         '''
+
         description = {
             f'{vals[0]}<-{vals[1]}': {
                 "next": vals[2],
@@ -40,18 +40,18 @@ class TuringMachine(object):
                 "direction": vals[4]
             }
         }
+
         self._map.update(description)
 
     def _describe_function(self, filename):
         '''
-        Creates a mapping for the given function description
-
+        Creates a mapping for the given function description.
         @param filename - str
         '''
 
         file = open(filename)
         conditions = file.readlines()
-        for line in [conditions for conditions in conditions if conditions.strip()]:
+        for line in [condition for condition in conditions if condition.strip()]:
             '''
             split the line into an array of strings
             Eg. [STATE] [INPUT] [NEXT] [DIR] -> [STATE, INPUT, NEXT, DIR]
@@ -66,7 +66,6 @@ class TuringMachine(object):
         '''
         Parses the tape by recursively going through the steps until
         it reaches the end of the tape or is in a final state.
-
         @param tape - list(str)
         @param position - int
         @param state - str
@@ -90,8 +89,7 @@ class TuringMachine(object):
     def execute(self, filename):
         '''
         Reads each line of an input file as individual
-        tapes and passes them to the function described
-
+        tapes and passes it to the function described.
         @param file - str
         '''
         file = open(filename)
