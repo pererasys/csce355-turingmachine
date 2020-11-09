@@ -1,5 +1,7 @@
 # CSCE355 Turing Machine
 
+## Functions
+
 ### Recognizing Palindromes
 
 **Description**
@@ -13,6 +15,8 @@ not, the TM halts without accepting.
 ```
 python3 palindrome.py -n PALINDROME -f tm_PALINDROME.txt -t xinputPALINDROME.txt
 ```
+
+## Other Information
 
 ### Linter Output
 

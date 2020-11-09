@@ -69,6 +69,7 @@ class TuringMachine():
         Parses the tape by recursively going through the steps until
         it reaches the end of the tape or is in a final state.
         '''
+
         position = self._head
         state = self._start_state
 
@@ -97,6 +98,7 @@ class TuringMachine():
         Reads each line of an input file as individual
         tapes and passes it to the function described.
         '''
+
         print(f"Program: {self._prefix}\n")
         file = open(filename)
         tapes = file.readlines()
