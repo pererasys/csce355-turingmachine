@@ -13,3 +13,10 @@ not, the TM halts without accepting.
 ```
 python3 palindrome.py -n PALINDROME -f tm_PALINDROME.txt -t xinputPALINDROME.txt
 ```
+
+### Linter Output
+
+```
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+```

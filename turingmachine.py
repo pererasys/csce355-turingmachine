@@ -15,7 +15,7 @@ def display_output(status, tape, output):
     '''
 
     print(
-        f'Input tape: {tape.strip()}\nStatus: {status}\nOutput: {"".join(output)}\n')
+        f'Input: {tape.strip()}\nStatus: {status}\nOutput: {"".join(output)}\n')
 
 
 class TuringMachine():
@@ -61,7 +61,6 @@ class TuringMachine():
         conditions = file.readlines()
         for line in [condition for condition in conditions if condition.strip()]:
             vals = line.split()
-
             self._build_description(vals)
         file.close()
 
@@ -98,10 +97,11 @@ class TuringMachine():
         Reads each line of an input file as individual
         tapes and passes it to the function described.
         '''
-
+        print(f"Program: {self._prefix}\n")
         file = open(filename)
         tapes = file.readlines()
-        for tape in tapes:
+        for i, tape in enumerate(tapes):
             stripped_tape = list(tape.strip())
+            print(f"Reading tape {i + 1}...\n")
             status, output = self.read_tape(stripped_tape)
-            display_output(status=status, tape=tape, output=output)
+            display_output(status=status, tape=tapes[i], output=output)
