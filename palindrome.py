@@ -17,8 +17,10 @@ if __name__ == "__main__":
     # Start timer
     t_start = time.perf_counter()
 
-    parser.add_argument('-n', '--name', dest='name',
-                        help='The name of the function, also defines the prefix for all states.', required=True)
+    parser.add_argument('-n', '--name',
+                        dest='name',
+                        help='The name of the function, also defines the prefix for all states.',
+                        required=True)
     parser.add_argument('-f', '--function', dest='function',
                         help='File name of the input file.', required=True)
     parser.add_argument('-t', '--tape', dest='tape',
