@@ -73,6 +73,23 @@ the input string
 python3 main.py -n DECREMENT -f tm_DECREMENT.txt -t xinputDECREMENT.txt
 ```
 
+### Divisible by 3
+
+**Description**
+
+The input string of 0 and 1 symbols is treated as a binary
+number n, written in left-to-right order. The TM should determine if n
+is a multiple of 3. If so, it should halt and accept. If not, it should halt
+without accepting. Note that this can be done by subtracting 3 (binary 11) from the input number, moving right to left and subtracting if the
+bit is a 1. If this process results in 0, then n is divisible by 3. If it does
+not result in 0, then n is not divisible by 3
+
+**Command**
+
+```
+python3 main.py -n DIVBYTHREE -f tm_DIVBYTHREE.txt -t xinputDIVBYTHREE.txt
+```
+
 ## Other Information
 
 ### Arguments
