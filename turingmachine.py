@@ -99,7 +99,7 @@ class TuringMachine():
         tapes and passes it to the function described.
         '''
 
-        print(f"Program: {self._prefix}\n")
+        print(f"Executing program: {self._prefix}\n")
         file = open(filename)
         tapes = file.readlines()
         for i, tape in enumerate(tapes):
