@@ -1,9 +1,0 @@
-{
-  "STATE_NAME": {
-    "INPUT_VALUE": {
-      "next": "NEXT_STATE",
-      "write": "CHARACTER_TO_WRITE",
-      "direction": "DIRECTION_OF_MOVE"
-    }
-  }
-}
