@@ -40,11 +40,10 @@ class TuringMachine(object):
             "direction": vals[4]
         }
 
-        if state in self._map.keys():
+        try:
             self._map[state].update({line_input: description})
-        else:
+        except:
             self._map.update({state: {line_input: description}})
-
 
     def _describe_function(self, filename):
         '''
