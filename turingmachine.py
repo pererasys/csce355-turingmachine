@@ -5,11 +5,17 @@ Copyright 2020
 
 '''
 
+VALID = "Accepted"
+INVALID = "Not Accepted"
+
 
 class TuringMachine(object):
 
-    def __init__(self, name=""):
+    def __init__(self, name="", head=1):
+        self._head = head
         self._prefix = name
+        self._start_state = f'{self._prefix}START'
+        self._final_state = f'{self._prefix}FINAL'
         self._map = {}
 
     def _is_final(self, state):
@@ -58,7 +64,7 @@ class TuringMachine(object):
             self._build_description(vals)
         file.close()
 
-    def read_tape(self, tape, position, state):
+    def read_tape(self, tape):
         '''
         Parses the tape by recursively going through the steps until
         it reaches the end of the tape or is in a final state.
@@ -66,25 +72,28 @@ class TuringMachine(object):
         @param position - int
         @param state - str
         '''
+        position = self._head
+        state = self._start_state
 
-        if self._is_final(state):
-            return "ACCEPTED", tape
+        while not self._is_final(state):
+            input_c = tape[position]
+    
+            try:
+                path = self._map[state][input_c]
+            except:
+                return INVALID, tape
 
-        input_c = tape[position]
-        try:
-            path = self._map[state][input_c]
-        except:
-            return "INVALID", tape
+            direction = path['direction']
+            next_path = path['next']
+            tape[position] = path['write']
 
-        direction = path['direction']
-        next_path = path['next']
-        tape[position] = path['write']
+            if position <= len(tape) - 1 or direction == "LEFT":
+                position += 1 if direction == 'RIGHT' else -1
+                state = next_path
+            else:
+                return INVALID, tape
 
-        if (position <= len(tape) - 1 or direction == "LEFT"):
-            position += 1 if direction == 'RIGHT' else -1
-            return self.read_tape(tape=tape, position=position, state=next_path)
-
-        return "NOT ACCEPTED", tape
+        return VALID, tape
 
     def execute(self, filename):
         '''
@@ -96,7 +105,9 @@ class TuringMachine(object):
         file = open(filename)
         tapes = file.readlines()
         for tape in tapes:
-            tape = list(tape.strip())
-            status, output = self.read_tape(
-                tape, position=1, state=f'{self._prefix}START')
-            print(f"{status} - {''.join(output)}")
+            stripped_tape = list(tape.strip())
+            status, output = self.read_tape(stripped_tape)
+            self._display_output(status=status, tape=tape, output=output)
+
+    def _display_output(self, status, tape, output):
+        print(f'Tape: {tape.strip()}\nStatus: {status}\nOutput: {"".join(output)}\n')
