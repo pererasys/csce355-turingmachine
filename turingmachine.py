@@ -11,10 +11,7 @@ INVALID = "Not Accepted"
 
 def display_output(status, tape, output):
     '''
-    Formats the output for a tape reading.
-    @param status - str
-    @param tape - str
-    @param output - str
+    Formats and prints the output for a tape reading.
     '''
 
     print(
