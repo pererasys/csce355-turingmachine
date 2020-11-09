@@ -38,7 +38,7 @@ class TuringMachine():
         return state.split(self._prefix)[1] == "FINAL"
 
     def _build_description(self, vals):
-        '''Builds a description for the given condition values.'''
+        '''Builds a description for the given conditions.'''
 
         state = vals[0]
         line_input = vals[1]

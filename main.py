@@ -30,6 +30,5 @@ if __name__ == "__main__":
     tm.describe(options.function)
     tm.execute(options.tape)
 
-    # End timer
     t_end = time.perf_counter()
     print(f"Completed in {t_end - t_start} seconds.")
