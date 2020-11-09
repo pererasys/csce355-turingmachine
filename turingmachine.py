@@ -5,16 +5,13 @@ Copyright 2020
 
 '''
 
-import json
-
-
 class TuringMachine(object):
 
-    def __init__(self, prefix="", function=None):
+    def __init__(self, name="", function=None):
         if not function:
             raise Exception("You must provide a function for the TM.")
 
-        self._prefix = prefix
+        self._prefix = name
         self._map = {}
 
         self._describe_function(function)
@@ -78,7 +75,7 @@ class TuringMachine(object):
 
         direction = path['direction']
         next_path = path['next']
-        tape[position] = str(path['write'])
+        tape[position] = path['write']
 
         if (position <= len(tape) - 1 or direction == "LEFT"):
             position += 1 if direction == 'RIGHT' else -1
@@ -92,6 +89,7 @@ class TuringMachine(object):
         tapes and passes it to the function described.
         @param file - str
         '''
+
         file = open(filename)
         tapes = file.readlines()
         for tape in tapes:
