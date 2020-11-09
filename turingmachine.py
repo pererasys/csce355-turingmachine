@@ -26,6 +26,8 @@ class TuringMachine():
     '''
 
     def __init__(self, name="", head=1):
+        print(f"Initializing function: {name}\n")
+
         self._head = head
         self._prefix = name
         self._start_state = f'{self._prefix}START'
@@ -99,7 +101,6 @@ class TuringMachine():
         tapes and passes it to the function described.
         '''
 
-        print(f"Executing program: {self._prefix}\n")
         file = open(filename)
         tapes = file.readlines()
         for i, tape in enumerate(tapes):
