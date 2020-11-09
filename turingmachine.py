@@ -5,6 +5,7 @@ Copyright 2020
 
 '''
 
+
 class TuringMachine(object):
 
     def __init__(self, name="", function=None):
@@ -30,15 +31,20 @@ class TuringMachine(object):
         @param vals - list(str)
         '''
 
+        state = vals[0]
+        line_input = vals[1]
+
         description = {
-            f'{vals[0]}<-{vals[1]}': {
-                "next": vals[2],
-                "write": vals[3],
-                "direction": vals[4]
-            }
+            "next": vals[2],
+            "write": vals[3],
+            "direction": vals[4]
         }
 
-        self._map.update(description)
+        if state in self._map.keys():
+            self._map[state].update({line_input: description})
+        else:
+            self._map.update({state: {line_input: description}})
+
 
     def _describe_function(self, filename):
         '''
@@ -56,7 +62,6 @@ class TuringMachine(object):
             vals = line.split()
 
             self._build_description(vals)
-
         file.close()
 
     def read_tape(self, tape, position, state):
@@ -71,7 +76,8 @@ class TuringMachine(object):
         if self._is_final(state):
             return "ACCEPTED", tape
 
-        path = self._map[f'{state}<-{tape[position]}']
+        input_c = tape[position]
+        path = self._map[state][input_c]
 
         direction = path['direction']
         next_path = path['next']
