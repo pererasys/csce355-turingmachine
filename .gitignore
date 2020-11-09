@@ -139,5 +139,7 @@ cython_debug/
 
 .DS_Store
 
+*.sh
+
 test_files
 *.zip
