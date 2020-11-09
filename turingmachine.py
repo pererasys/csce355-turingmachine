@@ -54,17 +54,7 @@ class TuringMachine():
         except KeyError:
             self._map.update({state: {line_input: description}})
 
-    def describe(self, filename):
-        '''Creates a mapping for the given function description.'''
-
-        file = open(filename)
-        conditions = file.readlines()
-        for line in [condition for condition in conditions if condition.strip()]:
-            vals = line.split()
-            self._build_description(vals)
-        file.close()
-
-    def read_tape(self, tape):
+    def _read_tape(self, tape):
         '''
         Parses the tape by recursively going through the steps until
         it reaches the end of the tape or is in a final state.
@@ -93,6 +83,16 @@ class TuringMachine():
 
         return VALID, tape
 
+    def describe(self, filename):
+        '''Creates a mapping for the given function description.'''
+
+        file = open(filename)
+        conditions = file.readlines()
+        for line in [condition for condition in conditions if condition.strip()]:
+            vals = line.split()
+            self._build_description(vals)
+        file.close()
+
     def execute(self, filename):
         '''
         Reads each line of an input file as individual
@@ -104,5 +104,5 @@ class TuringMachine():
         for i, tape in enumerate(tapes):
             stripped_tape = list(tape.strip())
             print(f"Reading tape {i + 1}...\n")
-            status, output = self.read_tape(stripped_tape)
+            status, output = self._read_tape(stripped_tape)
             display_output(status=status, tape=tapes[i], output=output)
