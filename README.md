@@ -52,6 +52,27 @@ character of the input string.
 python3 main.py -n INCREMENT -f tm_INCREMENT.txt -t xinputINCREMENT.txt
 ```
 
+### Decrementing
+
+**Description**
+
+The input string of 0 and 1 symbols is treated as a binary
+number n in backwards order from the usual way in which numbers
+are written. That is, the number is to be read left to right instead of
+right to left. The TM should decrement the number by 1 so that it is
+now the binary number that is n − 1. Note that decrementing, that is,
+subtracting 1, can be done by doing a ones’ complement, an increment,
+and a ones’ complement. Since this is a core subprogram to be used for
+other arithmetic, the TM should not finish and accept until the tape
+head is positioned once again on the leftmost non-blank character of
+the input string
+
+**Command**
+
+```
+python3 main.py -n DECREMENT -f tm_DECREMENT.txt -t xinputDECREMENT.txt
+```
+
 ## Other Information
 
 ### Arguments

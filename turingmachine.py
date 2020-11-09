@@ -10,9 +10,7 @@ INVALID = "Not Accepted"
 
 
 def display_output(status, tape, output):
-    '''
-    Formats and prints the output for a tape reading.
-    '''
+    '''Formats and prints the output for a tape reading.'''
 
     print(
         f'Input: {tape.strip()}\nStatus: {status}\nOutput: {"".join(output)}\n')

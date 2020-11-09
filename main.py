@@ -14,7 +14,6 @@ parser = argparse.ArgumentParser()
 
 
 if __name__ == "__main__":
-    # Start timer
     t_start = time.perf_counter()
 
     parser.add_argument('-n', '--name',
