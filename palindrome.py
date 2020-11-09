@@ -25,7 +25,8 @@ if __name__ == "__main__":
                         help='File name of the tape.', required=True)
     options = parser.parse_args()
 
-    tm = TuringMachine(name=options.name, function=options.function)
+    tm = TuringMachine(name=options.name)
+    tm.describe(options.function)
     tm.execute(options.tape)
 
     # End timer

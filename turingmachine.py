@@ -8,14 +8,9 @@ Copyright 2020
 
 class TuringMachine(object):
 
-    def __init__(self, name="", function=None):
-        if not function:
-            raise Exception("You must provide a function for the TM.")
-
+    def __init__(self, name=""):
         self._prefix = name
         self._map = {}
-
-        self._describe_function(function)
 
     def _is_final(self, state):
         '''
@@ -45,7 +40,7 @@ class TuringMachine(object):
         except:
             self._map.update({state: {line_input: description}})
 
-    def _describe_function(self, filename):
+    def describe(self, filename):
         '''
         Creates a mapping for the given function description.
         @param filename - str
@@ -76,7 +71,10 @@ class TuringMachine(object):
             return "ACCEPTED", tape
 
         input_c = tape[position]
-        path = self._map[state][input_c]
+        try:
+            path = self._map[state][input_c]
+        except:
+            return "INVALID", tape
 
         direction = path['direction']
         next_path = path['next']
