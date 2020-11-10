@@ -90,6 +90,20 @@ not result in 0, then n is not divisible by 3
 python3 main.py -n DIVBYTHREE -f tm_DIVBYTHREE.txt -t xinputDIVBYTHREE.txt
 ```
 
+### Zero Counter
+
+**Description**
+
+A Turing Machine that will read its input tape as a binary number
+n and write on that tape the binary number that is the number of zeros on
+the input tape.
+
+**Command**
+
+```
+python3 main.py -n ZEROCOUNTER -f tm_ZEROCOUNTER.txt -t xinputZEROCOUNTER.txt
+```
+
 ## Other Information
 
 ### Arguments
