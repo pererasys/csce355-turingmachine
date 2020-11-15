@@ -141,5 +141,5 @@ cython_debug/
 
 *.sh
 
-test_files
+files
 *.zip
