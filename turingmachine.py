@@ -19,15 +19,15 @@ def display_output(status, tape, output):
 class TuringMachine():
     '''
     Maps a function description in a dict, and performs said function
-    on a given tape. Will also determine if the given language
-    will accept the string.
+    on a provided tape. Will also determine if the given language
+    accepts the string.
     '''
 
-    def __init__(self, name="", head=1):
-        print(f"Initializing function: {name}\n")
+    def __init__(self, function="", head=1):
+        print(f"Initializing function: {function}\n")
 
         self._head = head
-        self._prefix = name
+        self._prefix = function
         self._start_state = f'{self._prefix}START'
         self._final_state = f'{self._prefix}FINAL'
         self._map = {}
@@ -83,16 +83,6 @@ class TuringMachine():
 
         return VALID, tape
 
-    def describe(self, filename):
-        '''Creates a mapping for the given function description.'''
-
-        file = open(filename)
-        conditions = file.readlines()
-        for line in [condition for condition in conditions if condition.strip()]:
-            vals = line.split()
-            self._build_description(vals)
-        file.close()
-
     def read(self, filename):
         '''
         Reads each line of an input file as individual
@@ -106,3 +96,18 @@ class TuringMachine():
             print(f"Reading tape {i + 1}...\n")
             status, output = self._read_tape(stripped_tape)
             display_output(status=status, tape=tapes[i], output=output)
+
+    def describe(self, filename):
+        '''Creates a mapping for the given function description.'''
+
+        try:
+            file = open(filename)
+        except FileNotFoundError as file_e:
+            raise FileNotFoundError(
+                'Could not find a description of the function provided.') from file_e
+
+        conditions = file.readlines()
+        for line in [condition for condition in conditions if condition.strip()]:
+            vals = line.split()
+            self._build_description(vals)
+        file.close()

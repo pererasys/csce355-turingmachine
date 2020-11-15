@@ -13,7 +13,7 @@ not, the TM halts without accepting.
 **Command**
 
 ```
-python3 main.py -n PALINDROME -f tm_PALINDROME.txt -t xinputPALINDROME.txt
+python3 main.py -f PALINDROME -t xinputPALINDROME.txt
 ```
 
 ### Ones Complement
@@ -30,7 +30,7 @@ non-blank character of the input string
 **Command**
 
 ```
-python3 main.py -n COMPLEMENT -f tm_COMPLEMENT.txt -t xinputCOMPLEMENT.txt
+python3 main.py -f COMPLEMENT -t xinputCOMPLEMENT.txt
 ```
 
 ### Incrementing
@@ -49,7 +49,7 @@ character of the input string.
 **Command**
 
 ```
-python3 main.py -n INCREMENT -f tm_INCREMENT.txt -t xinputINCREMENT.txt
+python3 main.py -f INCREMENT -t xinputINCREMENT.txt
 ```
 
 ### Decrementing
@@ -70,7 +70,7 @@ the input string
 **Command**
 
 ```
-python3 main.py -n DECREMENT -f tm_DECREMENT.txt -t xinputDECREMENT.txt
+python3 main.py -f DECREMENT -t xinputDECREMENT.txt
 ```
 
 ### Divisible by 3
@@ -87,7 +87,7 @@ not result in 0, then n is not divisible by 3
 **Command**
 
 ```
-python3 main.py -n DIVBYTHREE -f tm_DIVBYTHREE.txt -t xinputDIVBYTHREE.txt
+python3 main.py -f DIVBYTHREE -t xinputDIVBYTHREE.txt
 ```
 
 ### Zero Counter
@@ -101,7 +101,7 @@ the input tape.
 **Command**
 
 ```
-python3 main.py -n ZEROCOUNT -f tm_ZEROCOUNT.txt -t xinputZEROCOUNT.txt
+python3 main.py -f ZEROCOUNT -t xinputZEROCOUNT.txt
 ```
 
 ## Other Information
@@ -109,12 +109,11 @@ python3 main.py -n ZEROCOUNT -f tm_ZEROCOUNT.txt -t xinputZEROCOUNT.txt
 ### Arguments
 
 ```
-python3 main.py [-h] -n NAME -f FUNCTION -t TAPE
+python3 main.py [-h] -f FUNCTION -t TAPE
 
 optional arguments:
   -h, --help                        Help.
-  -n NAME, --name NAME              The name of the function, also defines the prefix for all states.
-  -f FUNCTION, --function FUNCTION  File name of the input file.
+  -f FUNCTION, --function FUNCTION  The name of the function, also defines the prefix for all states.
   -t TAPE, --tape TAPE              File name of the tape.
 ```
 
