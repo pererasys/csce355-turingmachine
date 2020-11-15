@@ -101,7 +101,7 @@ the input tape.
 **Command**
 
 ```
-python3 main.py -n ZEROCOUNTER -f tm_ZEROCOUNTER.txt -t xinputZEROCOUNT.txt
+python3 main.py -n ZEROCOUNT -f tm_ZEROCOUNT.txt -t xinputZEROCOUNT.txt
 ```
 
 ## Other Information
