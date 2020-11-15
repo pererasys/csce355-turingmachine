@@ -1,5 +1,17 @@
 # CSCE355 Turing Machine
 
+## Input file format
+
+Input files (-t TAPE) must be of the format
+
+```
+b1001000bbbbbbbbbbbbbb
+b0000bbbbbbbbbbbbbb
+b111010100110000bbbbbbbbbbbbbb
+```
+
+Notice the leading 'b', this signifies a blank on the tape. The Turing Machine will automatically position itself over the starting position, the leftmost non-blank. Although traditional turing machines can have an arbitrary number of blanks to the left, in accordance with the guidelines of this project, all input strings must have exactly one leading blank, 'b'.
+
 ## Functions
 
 ### Recognizing Palindromes
@@ -13,7 +25,7 @@ not, the TM halts without accepting.
 **Command**
 
 ```
-python3 main.py -f PALINDROME -t xinputPALINDROME.txt
+python3 main.py -f PALINDROME -t $1
 ```
 
 ### Ones Complement
@@ -30,7 +42,7 @@ non-blank character of the input string
 **Command**
 
 ```
-python3 main.py -f COMPLEMENT -t xinputCOMPLEMENT.txt
+python3 main.py -f COMPLEMENT -t $1
 ```
 
 ### Incrementing
@@ -49,7 +61,7 @@ character of the input string.
 **Command**
 
 ```
-python3 main.py -f INCREMENT -t xinputINCREMENT.txt
+python3 main.py -f INCREMENT -t $1
 ```
 
 ### Decrementing
@@ -70,7 +82,7 @@ the input string
 **Command**
 
 ```
-python3 main.py -f DECREMENT -t xinputDECREMENT.txt
+python3 main.py -f DECREMENT -t $1
 ```
 
 ### Divisible by 3
@@ -87,7 +99,7 @@ not result in 0, then n is not divisible by 3
 **Command**
 
 ```
-python3 main.py -f DIVBYTHREE -t xinputDIVBYTHREE.txt
+python3 main.py -f DIVBYTHREE -t $1
 ```
 
 ### Zero Counter
@@ -101,7 +113,7 @@ the input tape.
 **Command**
 
 ```
-python3 main.py -f ZEROCOUNT -t xinputZEROCOUNT.txt
+python3 main.py -f ZEROCOUNT -t $1
 ```
 
 ## Other Information
