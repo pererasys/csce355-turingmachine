@@ -35,7 +35,7 @@ class TuringMachine():
     def _is_final(self, state):
         '''Returns whether or not the tape is in a final state.'''
 
-        return state.split(self._prefix)[1] == "FINAL"
+        return state == self._final_state
 
     def _build_description(self, vals):
         '''Builds a description for the given conditions.'''
@@ -56,7 +56,7 @@ class TuringMachine():
 
     def _read_tape(self, tape):
         '''
-        Parses the tape by recursively going through the steps until
+        Parses the tape by looping through the steps until
         it reaches the end of the tape or is in a final state.
         '''
 
@@ -72,12 +72,12 @@ class TuringMachine():
                 return INVALID, tape
 
             direction = path['direction']
-            next_path = path['next']
+            next_state = path['next']
             tape[position] = path['write']
 
             if position <= len(tape) - 1 or direction == "LEFT":
                 position += 1 if direction == 'RIGHT' else -1
-                state = next_path
+                state = next_state
             else:
                 return INVALID, tape
 
@@ -93,7 +93,7 @@ class TuringMachine():
             self._build_description(vals)
         file.close()
 
-    def execute(self, filename):
+    def read(self, filename):
         '''
         Reads each line of an input file as individual
         tapes and passes it to the function described.

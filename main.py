@@ -28,7 +28,7 @@ if __name__ == "__main__":
 
     tm = TuringMachine(name=options.name)
     tm.describe(options.function)
-    tm.execute(options.tape)
+    tm.read(options.tape)
 
     t_end = time.perf_counter()
     print(f"Completed in {t_end - t_start} seconds.")
