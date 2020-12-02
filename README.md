@@ -16,7 +16,7 @@ INCREMENTTRANSITION 0 INCREMENTTRANSITION 0 LEFT
 INCREMENTTRANSITION b INCREMENTFINAL b RIGHT
 ```
 
-## Tap format
+## Tape format
 
 Tapes (-t TAPE) must be of the format
 
