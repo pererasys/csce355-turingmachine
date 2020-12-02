@@ -27,7 +27,7 @@ if __name__ == "__main__":
     t_start = time.perf_counter()
 
     tm = TuringMachine(function=options.function)
-    tm.describe(f'tm_{options.function}.txt')
+    tm.describe(f'functions/tm_{options.function}.txt')
     tm.read(options.tape)
 
     # end timer

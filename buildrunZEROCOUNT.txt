@@ -1,1 +1,0 @@
-python3 main.py -f ZEROCOUNT -t $1
