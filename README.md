@@ -1,18 +1,83 @@
 # CSCE355 Turing Machine
 
-## Input file format
+## Function Descriptions
 
-Input files (-t TAPE) must be of the format
+Function descriptions must adhere to this format
+
+```
+eg. A turing machine to increment a binary integer
+
+INCREMENTSTART 0 INCREMENTTRANSITION 1 LEFT
+INCREMENTSTART 1 INCREMENTSTART 0 RIGHT
+INCREMENTSTART b INCREMENTTRANSITION 1 LEFT
+
+INCREMENTTRANSITION 1 INCREMENTTRANSITION 1 LEFT
+INCREMENTTRANSITION 0 INCREMENTTRANSITION 0 LEFT
+INCREMENTTRANSITION b INCREMENTFINAL b RIGHT
+```
+
+## Tap format
+
+Tapes (-t TAPE) must be of the format
 
 ```
 b1001000bbbbbbbbbbbbbb
 b0000bbbbbbbbbbbbbb
 b111010100110000bbbbbbbbbbbbbb
+...
 ```
 
 Notice the leading 'b', this signifies a blank on the tape. The Turing Machine will automatically position itself over the starting position, the leftmost non-blank. Although traditional turing machines can have an arbitrary number of blanks to the left, in accordance with the guidelines of this project, all input strings must have exactly one leading blank, 'b'.
 
-## Functions
+## Datastructure
+
+For this project, I am using a Python dict to store the function mapping.
+
+```
+Map for the increment function shown above.
+
+{
+    "INCREMENTSTART": {
+        "0": {
+            "next": "INCREMENTTRANSITION",
+            "write": "1",
+            "direction": "LEFT"
+        },
+        "1": {
+            "next": "INCREMENTSTART",
+            "write": "0",
+            "direction": "RIGHT"
+        },
+        "b": {
+            "next": "INCREMENTTRANSITION",
+            "write": "1",
+            "direction": "LEFT"
+        }
+    },
+    "INCREMENTTRANSITION": {
+        "1": {
+            "next": "INCREMENTTRANSITION",
+            "write": "1",
+            "direction": "LEFT"
+        },
+        "0": {
+            "next": "INCREMENTTRANSITION",
+            "write": "0",
+            "direction": "LEFT"
+        },
+        "b": {
+            "next": "INCREMENTFINAL",
+            "write": "b",
+            "direction": "RIGHT"
+        }
+    }
+}
+```
+
+By using a dict, I was able to access the next state, output, and direction while maintaining the underlying functions
+original efficiency.
+
+## Provided Functions
 
 ### Recognizing Palindromes
 
