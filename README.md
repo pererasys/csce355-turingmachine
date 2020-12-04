@@ -29,9 +29,9 @@ b111010100110000bbbbbbbbbbbbbb
 
 Notice the leading 'b', this signifies a blank on the tape. The Turing Machine will automatically position itself over the starting position, the leftmost non-blank. Although traditional turing machines can have an arbitrary number of blanks to the left, in accordance with the guidelines of this project, all input strings must have exactly one leading blank, 'b'.
 
-## Datastructure
+## How it works
 
-For this project, I am using a Python dict to store the function mapping.
+When describing the function, we map the states and their inputs to a Python dict. This allows us to transition through the table quickly.
 
 ```
 Map for the increment function shown above.
@@ -73,9 +73,6 @@ Map for the increment function shown above.
     }
 }
 ```
-
-By using a dict, I was able to access the next state, output, and direction while maintaining the underlying functions
-original efficiency.
 
 ## Provided Functions
 
